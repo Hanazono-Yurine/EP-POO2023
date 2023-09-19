@@ -9,4 +9,8 @@ class Sinal {
 		double *getSequencia();
 		int getComprimento();
 		void imprimir(std::string nomeDoSinal);
+	
+	private:
+		double *sequencia = nullptr;
+		int comprimento = 0;
 };
