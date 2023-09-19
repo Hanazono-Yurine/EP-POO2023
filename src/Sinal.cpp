@@ -3,7 +3,9 @@
 
 Sinal::Sinal(double *sequencia, int comprimento):
 comprimento(comprimento), sequencia(new double[comprimento]) {
-
+	for (int i = 0; i < comprimento; i++) {
+		this->sequencia[i] = sequencia[i];
+	}
 }
 
 Sinal::~Sinal() {
