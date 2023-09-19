@@ -9,4 +9,7 @@ class Amplificador {
 		Sinal* processar(Sinal* sinalIN);
 		void setGanho(double ganho);
 		double getGanho();
+
+	private:
+		double ganho = 0.0;
 };
