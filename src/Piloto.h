@@ -7,4 +7,6 @@ class Piloto {
 		Piloto(double ganho);
 		virtual ~Piloto();
 		Sinal* processar(Sinal* sinalIN);
+	private:
+		double ganho = 0.0;
 };
