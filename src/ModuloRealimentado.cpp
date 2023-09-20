@@ -34,14 +34,10 @@ Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 
 	for (int index = 1; index < sinalIN->getComprimento(); index++) {
 		sinalInverted->getSequencia()[index] = inverter.processar(sinalOUT)->getSequencia()[index - 1];
-		std::cout << sinalInverted->getSequencia()[index] << std::endl;
 
-		std::cout << sinalDiff->getSequencia()[index] << " ";
 		sinalDiff->getSequencia()[index] = sum.processar(sinalDiff, sinalInverted)->getSequencia()[index];
-		std::cout << sinalDiff->getSequencia()[index] << std::endl;
 
 		sinalOUT->getSequencia()[index] = piloto.processar(sinalDiff)->getSequencia()[index];
-		std::cout << sinalOUT->getSequencia()[index] << std::endl;
 	}
 	return sinalOUT;
 }
