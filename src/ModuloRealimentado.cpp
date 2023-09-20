@@ -20,10 +20,7 @@ Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 	Piloto piloto = Piloto(this->ganho);
 	Somador sum = Somador();
 
-	double *finalVelocid = new double[sinalIN->getComprimento()];
 	double *diff = new double[sinalIN->getComprimento()];
-	double x = 0.0;
-	double y = sinalIN->getSequencia()[0];
 
 	Sinal *sinalOUT = new Sinal(diff, sinalIN->getComprimento());
 	Sinal *sinalDiff = new Sinal(sinalIN->getSequencia(), sinalIN->getComprimento());
