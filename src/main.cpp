@@ -7,6 +7,7 @@ void menu();
 void test();
 
 int main() {
+	//Bom dia
 	menu();
 	test();
 	return 0;
