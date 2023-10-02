@@ -23,18 +23,18 @@ Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 	double *diff = new double[sinalIN->getComprimento()];
 
 	Sinal *sinalOUT = new Sinal(diff, sinalIN->getComprimento());
-	Sinal *sinalDiff = new Sinal(sinalIN->getSequencia(), sinalIN->getComprimento());
-	Sinal *sinalInverted = new Sinal(diff, sinalIN->getComprimento());
+	Sinal sinalDiff = Sinal(sinalIN->getSequencia(), sinalIN->getComprimento());
+	Sinal sinalInverted = Sinal(diff, sinalIN->getComprimento());
 
 	sinalOUT->getSequencia()[0] = piloto.processar(sinalIN)->getSequencia()[0];
-	sinalDiff->getSequencia()[0] = sinalIN->getSequencia()[0];
+	sinalDiff.getSequencia()[0] = sinalIN->getSequencia()[0];
 
 	for (int index = 1; index < sinalIN->getComprimento(); index++) {
-		sinalInverted->getSequencia()[index] = inverter.processar(sinalOUT)->getSequencia()[index - 1];
+		sinalInverted.getSequencia()[index] = inverter.processar(sinalOUT)->getSequencia()[index - 1];
 
-		sinalDiff->getSequencia()[index] = sum.processar(sinalDiff, sinalInverted)->getSequencia()[index];
+		sinalDiff.getSequencia()[index] = sum.processar(&sinalDiff, &sinalInverted)->getSequencia()[index];
 
-		sinalOUT->getSequencia()[index] = piloto.processar(sinalDiff)->getSequencia()[index];
+		sinalOUT->getSequencia()[index] = piloto.processar(&sinalDiff)->getSequencia()[index];
 	}
 	return sinalOUT;
 }
