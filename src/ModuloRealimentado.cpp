@@ -41,11 +41,16 @@ Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 
 	for (int index = 1; index < sinalIN->getComprimento(); index++) {
 		// Daqui em diante é só lê no pdf
-		sinalInverted.getSequencia()[index] = inverter.processar(sinalOUT)->getSequencia()[index - 1];
 
-		sinalDiff.getSequencia()[index] = sum.processar(&sinalDiff, &sinalInverted)->getSequencia()[index];
+
+		sinalInverted.getSequencia()[index] = inverter.processar(sinalOUT)->getSequencia()[index - 1]; 
+		//inverte sinalOUT, pega o valor posicao anterior e guarda em sinalInverted
+
+		sinalDiff.getSequencia()[index] = sum.processar(&sinalDiff, &sinalInverted)->getSequencia()[index]; 
+		//realiaza a soma sinalInverted + sinalDiff(que antes de ser modificado eh = ao sinalIN), pega o valor da posicao [index] e guarda no sinalDiff na [index]
 
 		sinalOUT->getSequencia()[index] = piloto.processar(&sinalDiff)->getSequencia()[index];
+		//passa o sinalDiff no piloto, pega o valor da posicao [index] e guarda no sinalOUT na [index]
 	}
 	return sinalOUT;
 }
