@@ -11,17 +11,21 @@ First you have to clone this repo:
 `git clone htttps://github.com/Hanazono-Yurine/EP-POO2023`
 
 and enter the folder that has just been created
+
 `cd EP-POO2023`
 
 ## Compile
 
 Simply run it:
+
 `g++ src/*.cpp -o program_name`
+
 Change `program_name` to any name you like.
 
 ## Run
 
 To run, simply run the following:
+
 `./program_name`
 
 # Marks or Grades or Whatever
@@ -29,6 +33,7 @@ The project is divided into two parts: EP-1 and EP-2.
 The final grades for the project will be updated throughout the semester:
 
 EP-1 -> [??]
+
 EP-2 -> [??]
 
 # Some notes
