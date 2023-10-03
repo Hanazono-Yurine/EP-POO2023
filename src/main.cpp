@@ -16,10 +16,6 @@ int main() {
 	return 0;
 }
 
-void menu() {
-
-}
-
 void test() {
 	ModuloRealimentado test = ModuloRealimentado(0.2);
 	double justatest[MAX_STEPS];
