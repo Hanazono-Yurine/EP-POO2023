@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PILOTO_H
+#define PILOTO_H
 
 #include "Sinal.h"
 
@@ -10,3 +11,5 @@ class Piloto {
 	private:
 		double ganho = 0.0;
 };
+
+#endif

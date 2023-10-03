@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MODULOREALIMENTADO_H
+#define MODULOREALIMENTADO_H
 
 #include "Sinal.h"
 
@@ -10,3 +11,5 @@ class ModuloRealimentado {
 	private:
 		double ganho = 0.0;
 };
+
+#endif
