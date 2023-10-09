@@ -3,7 +3,10 @@
 #include "Amplificador.h"
 #include "Integrador.h"
 
-#define MAX_STEPS 60
+const int maxSteps = 60;
+// No PDF esta falando que nao pode usar outros defines,
+// e eu me recuso a usar numeros magicos no meu codigo,
+// por isso essa variavel constante
 
 void menu();
 void test();
@@ -18,10 +21,10 @@ int main() {
 
 void test() {
 	ModuloRealimentado test = ModuloRealimentado(0.2);
-	double justatest[MAX_STEPS];
-	for (int i = 0; i < MAX_STEPS; i++) {
+	double justatest[maxSteps];
+	for (int i = 0; i < maxSteps; i++) {
 		justatest[i] = 5;
 	}
-	Sinal *finalTest = test.processar(new Sinal(justatest, MAX_STEPS));
+	Sinal *finalTest = test.processar(new Sinal(justatest, maxSteps));
 	finalTest->imprimir("test");
 }

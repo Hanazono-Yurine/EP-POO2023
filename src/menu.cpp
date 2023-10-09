@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include "ModuloRealimentado.h"
@@ -7,13 +8,16 @@
 #include "Integrador.h"
 #include "Derivador.h"
 
-#define MAX_STEPS 60
+const int maxSteps = 60;
+// No PDF esta falando que nao pode usar outros defines,
+// e eu me recuso a usar numeros magicos no meu codigo,
+// por isso essa variavel constante
 
 using namespace std;
 
 Sinal* newSinal() {
 
-	double arraySinal[MAX_STEPS];
+	double arraySinal[maxSteps];
 
 	cout << "\nQual sinal voce gostaria de utilizar como entrada da sua simulacao?" << endl;
 	cout << "1) 5 + 3 * cos(n * pi / 8)\n2) constante\n3) rampa\nEscolha : ";
@@ -23,7 +27,7 @@ Sinal* newSinal() {
 
 	switch (choiceSinal) {
 		case 1:
-			for (int i = 0; i < MAX_STEPS; i++) {
+			for (int i = 0; i < maxSteps; i++) {
 				arraySinal[i] = 5 + 3 * cos(i * M_PI / 8);
 			}
 			break;
@@ -34,7 +38,7 @@ Sinal* newSinal() {
 				double constValue = 0;
 				cin >> constValue;
 
-				for (int i = 0; i < MAX_STEPS; i++) {
+				for (int i = 0; i < maxSteps; i++) {
 					arraySinal[i] = constValue;
 				}
 			}
@@ -45,20 +49,20 @@ Sinal* newSinal() {
 			double slope = 0;
 			cin >> slope;
 
-			for (int i = 0; i < MAX_STEPS; i++) {
+			for (int i = 0; i < maxSteps; i++) {
 				arraySinal[i] = slope*i;
 			}
 			break;
 	}
 
-	return new Sinal(arraySinal, MAX_STEPS);
+	return new Sinal(arraySinal, maxSteps);
 }
 
 void menu() {
 
-	double cosineWave[MAX_STEPS];
+	double cosineWave[maxSteps];
 
-	for (int i = 0; i < MAX_STEPS; i++) {
+	for (int i = 0; i < maxSteps; i++) {
 		cosineWave[i] = 5 + 3 * cos(i*M_PI/8);
 		//cout << cosineWave[i] << ", ";
 	}
