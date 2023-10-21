@@ -22,6 +22,12 @@ Simply run it:
 
 Change `program_name` to any name you like.
 
+Or:
+
+`make`
+
+The binary will be in `build/main`
+
 ## Run
 
 To run, simply run the following:
@@ -29,8 +35,9 @@ To run, simply run the following:
 `./program_name`
 
 # Marks or Grades or Whatever
-The project is divided into two parts: EP-1 and EP-2.
-The final grades for the project will be updated throughout the semester:
+The project is divided into two parts: EP-1 and EP-2.  
+
+The final grades for the project will be updated throughout the semester:  
 
 EP-1 -> [??]
 
