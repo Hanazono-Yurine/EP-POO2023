@@ -1,0 +1,33 @@
+        Simulink em C++
+Qual simulacao voce gostaria de fazer ?
+1) Piloto Automatico
+2) Sua propria sequencia de operacoes
+Escolha : 
+Qual sinal voce gostaria de utilizar como entrada da sua simulacao?
+1) 5 + 3 * cos(n * pi / 8)
+2) constante
+3) rampa
+Escolha : 
+Qual o valor dessa constante?
+C = 
+Qual o ganho do acelerador?
+g = 
+          ^     Velocidade do Carro
+     10.0_|                                                                
+          |                                                                
+          |                                                                
+          |                                                                
+          |                                                                
+      6.7_|                                                                
+          |                                                                
+          |                                                                
+          |           ................................................     
+          |      ..'''                                                     
+      3.3_|   .''                                                          
+          |  .                                                             
+          | '                                                              
+          |'                                                               
+          '                                                                
+      0.0________________________________________________________________> 
+          |     |     |     |     |     |     |     |     |     |      
+          00    06    12    18    24    30    36    42    48    54     
