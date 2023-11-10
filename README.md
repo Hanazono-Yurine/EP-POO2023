@@ -22,11 +22,16 @@ Simply run it:
 
 Change `program_name` to any name you like.
 
-Or:
+Or using **CMake**:
 
-`make`
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
 
-The binary will be in `build/main`
+The binary will be in `build/bin/ep-poo`
 
 ## Run
 
