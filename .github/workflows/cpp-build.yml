@@ -12,16 +12,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Make
-        run: make
+      - name: CMake
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build .
       - name: Upload bin file
         uses: actions/upload-artifact@v3
         with:
-          name: binary
-          path: ./build/main
+          name: unit-test
+          path: ./build/tests/unit_test
           retention-days: 1
 
-  auto-pilot-test:
+  unit-test:
     needs: build
     runs-on: ubuntu-latest
 
@@ -31,38 +34,9 @@ jobs:
       - name: Download bin file
         uses: actions/download-artifact@v3
         with:
-          name: binary
+          name: unit-test
 
       - name: Test
         run: |
-          chmod a+x ./main
-          ./main < ./tests/piloto_automatic_input.txt > ./tests/output.txt
-      - name: Compare
-        run: |
-          chmod a+x ./tests/simple_compare.sh
-          ./tests/simple_compare.sh ./tests/output.txt ./tests/piloto_automatic_sample.txt
-        shell: bash
-      - name: Delete files
-        run: rm ./tests/output.txt
-
-  user-sequence-test:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download bin file
-        uses: actions/download-artifact@v3
-        with:
-          name: binary
-
-      - name: Test
-        run: |
-          chmod a+x ./main
-          ./main < ./tests/propria_sequencia_input.txt > ./tests/output.txt
-      - name: Compare
-        run: |
-          chmod a+x ./tests/simple_compare.sh
-          ./tests/simple_compare.sh ./tests/output.txt ./tests/propria_sequencia_sample.txt
-      - name: Delete files
-        run: rm ./tests/output.txt
+          chmod a+x ./unit_test
+          ./unit_test
