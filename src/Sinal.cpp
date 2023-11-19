@@ -1,8 +1,12 @@
+#include <stdexcept>
 #include "Sinal.h"
 #include "Grafico.h"
 
 Sinal::Sinal(double *sequencia, int comprimento):
 comprimento(comprimento), sequencia(new double[comprimento]) {
+	if (comprimento <= 0)
+		throw new std::invalid_argument("Comprimento must be at least 1");
+
 	for (int i = 0; i < comprimento; i++) {
 		this->sequencia[i] = sequencia[i];
 	}
@@ -10,6 +14,9 @@ comprimento(comprimento), sequencia(new double[comprimento]) {
 
 Sinal::Sinal(double constante, int comprimento):
 comprimento(comprimento), sequencia(new double[comprimento]) {
+	if (comprimento <= 0)
+		throw new std::invalid_argument("Comprimento must be at least 1");
+
 	for (int i = 0; i < comprimento; i++) {
 		this->sequencia[i] = constante;
 	}
