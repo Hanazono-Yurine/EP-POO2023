@@ -8,6 +8,13 @@ comprimento(comprimento), sequencia(new double[comprimento]) {
 	}
 }
 
+Sinal::Sinal(double constante, int comprimento):
+comprimento(comprimento), sequencia(new double[comprimento]) {
+	for (int i = 0; i < comprimento; i++) {
+		this->sequencia[i] = constante;
+	}
+}
+
 Sinal::~Sinal() {
 	delete[] this->sequencia;
 }

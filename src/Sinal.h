@@ -8,6 +8,7 @@
 class Sinal {
 	public:
 		Sinal(double *sequencia, int comprimento);
+		Sinal(double constante, int comprimento);
 		virtual ~Sinal();
 		double *getSequencia();
 		int getComprimento();
