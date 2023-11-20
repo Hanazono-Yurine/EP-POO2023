@@ -4,9 +4,6 @@
 #include "Integrador.h"
 
 const int maxSteps = 60;
-// No PDF esta falando que nao pode usar outros defines,
-// e eu me recuso a usar numeros magicos no meu codigo,
-// por isso essa variavel constante
 
 void menu();
 void test();
