@@ -13,10 +13,13 @@ class Sinal {
 		double *getSequencia();
 		int getComprimento();
 		void imprimir(std::string nomeDoSinal);
+		void imprimir();
+		void imprimir(int tamanho);
 	
 	private:
 		double *sequencia = nullptr;
 		int comprimento = 0;
+		void imprimirListForm(int tamanho);
 };
 
 #endif
