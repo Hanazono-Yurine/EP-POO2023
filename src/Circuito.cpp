@@ -21,8 +21,7 @@ int Circuito::getUltimoID() {
 }
 
 void Circuito::assignNewId() {
-	Circuito::lastAssignedID = getUltimoID() + 1;
-	this->currentID = Circuito::lastAssignedID;
+	this->currentID = ++Circuito::lastAssignedID;
 }
 
 int Circuito::lastAssignedID = 0;
