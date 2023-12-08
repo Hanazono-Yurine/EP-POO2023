@@ -8,7 +8,7 @@ class Modulo : public CircuitoSISO {
 		Modulo();
 		virtual ~Modulo();
 		virtual void adicionar(CircuitoSISO *circ);
-		std::list <CircuitoSISO*> *getCircuitos();
+		virtual std::list <CircuitoSISO*> *getCircuitos();
 		void imprimir();
 	private:
 		std::list<CircuitoSISO *> *circuitList;
