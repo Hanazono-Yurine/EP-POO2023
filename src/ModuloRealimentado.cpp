@@ -34,6 +34,7 @@ Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 	delete[] diff;
 
 	sinalOUT->getSequencia()[0] = this->piloto->processar(sinalIN)->getSequencia()[0];
+	sinalDiff.getSequencia()[0] = sinalIN->getSequencia()[0];
 
 	for (int index = 1; index < sinalIN->getComprimento(); index++) {
 
