@@ -7,6 +7,7 @@
 #include "Amplificador.h"
 #include "Integrador.h"
 #include "Derivador.h"
+#include "PersistenciaDeModulo.h"
 
 const int maxSteps = 60;
 // No PDF esta falando que nao pode usar outros defines,
@@ -15,7 +16,7 @@ const int maxSteps = 60;
 
 using namespace std;
 
-Sinal* newSinal() {
+Sinal* newSinal() { //identico ep1
 
 	double arraySinal[maxSteps];
 
@@ -68,21 +69,25 @@ void menu() {
 	}
 
 	cout << "        Simulink em C++" << endl;
-	cout << "Qual simulacao voce gostaria de fazer ?\n1) Piloto Automatico\n2) Sua propria sequencia de operacoes\nEscolha : ";
+	cout << "Qual simulacao voce gostaria de fazer ?\n1) Circuito advindo de arquivo\n2) Sua propria sequencia de operacoes\nEscolha : ";
 
 	int choice = 0;
 	cin >> choice;
 
 	Sinal* signalSim = newSinal();
 
+	Modulo* modulo;
+
 	if (choice == 1) {
 
-		cout << "\nQual o ganho do acelerador?\ng = ";
+		cout << "Qual o nome do arquivo a ser lido?" << endl;
+		cout << "Nome: ";
+		std::string fileName;
+		cin >> fileName;
 
-		double acceleration = 0;
-		cin >> acceleration;
-
-		cout << endl;
+		PersistenciaDeModulo* persistenciaDeModulo = new PersistenciaDeModulo(fileName);
+		modulo = persistenciaDeModulo->lerDeArquivo();
+		delete persistenciaDeModulo;
 
 		//ModuloRealimentado *moduloRealimentado = new ModuloRealimentado(acceleration);
 		//moduloRealimentado->processar(signalSim)->imprimir("Velocidade do Carro");
@@ -90,11 +95,18 @@ void menu() {
 	} else if (choice == 2) {
 		bool repeat = true;
 
+		cout << "\nQual estrutura de operações voce deseja ter como base?" << endl;
+		cout << "1) Operacoes em serie nao realimentadas\n2) Operacoes em paralelo nao realimentadas\n3) Operacoes em serie realimentadas\n" << endl;
+		cout << "Escolha : ";
+
+		int operationStructureChoice = 0;
+		cin >> operationStructureChoice;
+
 		while (repeat) {
 			repeat = false;
 
 			cout << "\nQual operacao voce gostaria de fazer?" << endl;
-			cout << "1) Amplificar\n2) Somar\n3) Derivar\n4) Integrar" << endl;
+			cout << "1) Amplificar\n2) Derivar\n3) Integrar" << endl;
 			cout << "Escolha : ";
 
 			int operationChoice = 0;
@@ -116,26 +128,13 @@ void menu() {
 					break;
 				case 2:
 					{
-						cout << "\nInforme mais um sinal para ser somado.";
-
-						Sinal *signalToSum = newSinal();
-
-						Somador sum = Somador();
-						Sinal *tempSignal = sum.processar(signalSim, signalToSum);
-						delete signalToSum;
-						delete signalSim;
-						signalSim = tempSignal;
-					}
-					break;
-				case 3:
-					{
 						Derivador deriv = Derivador();
 						Sinal *tempSignal = deriv.processar(signalSim);
 						delete signalSim;
 						signalSim = tempSignal;
 					}
 					break;
-				case 4:
+				case 3:
 					{
 						Integrador integ = Integrador();
 						Sinal *tempSignal = integ.processar(signalSim);
@@ -146,7 +145,7 @@ void menu() {
 			}
 
 			cout << "\nO que voce quer fazer agora?" << endl;
-			cout << "1) Realizar mais uma operacao no resultado\n2) Imprimir o resultado para terminar" << endl;
+			cout << "1) Realizar mais uma operacao no resultado\n2) Imprimir o resultado" << endl;
 			cout << "Escolha : ";
 
 			int repeatChoice = 0;
@@ -161,5 +160,29 @@ void menu() {
 		signalSim->imprimir("Resultado Final");
 		delete signalSim;
 	}
+
+
+
+	cout << "Voce gostaria de salvar o circuito em um novo arquivo?" << endl;
+	cout << "1) Sim" << endl;
+	cout << "1) Nao" << endl;
+	cout << "Escolha : ";
+
+	int saveCircuitChoice = 0;
+	cin >> saveCircuitChoice;
+	
+	if (saveCircuitChoice == 1)
+	{
+		cout << "Qual o nome do arquivo a ser escrito?" << endl;
+		cout << "Nome: ";
+		std::string newFileName;
+		cin >> newFileName;
+
+		PersistenciaDeModulo* persistenciaDeModulo = new PersistenciaDeModulo(newFileName);
+		persistenciaDeModulo->salvarEmAquivo(modulo);
+
+		delete persistenciaDeModulo;
+	}
+
 
 }
