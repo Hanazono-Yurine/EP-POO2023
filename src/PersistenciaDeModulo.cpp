@@ -6,8 +6,11 @@
 #include "ModuloEmSerie.h"
 #include "ModuloEmParalelo.h"
 #include "ModuloRealimentado.h"
+#include <cstring>
 #include <fstream>
+#include <iostream>
 #include <ostream>
+#include <stdexcept>
 #include <string>
 
 PersistenciaDeModulo::PersistenciaDeModulo(std::string nomeDoArquivo) : fileName(nomeDoArquivo) {
@@ -63,5 +66,68 @@ void PersistenciaDeModulo::writeCircuitToFile(std::ofstream &file, char circuit,
 }
 
 Modulo *PersistenciaDeModulo::lerDeArquivo() {
-	return nullptr;
+	std::ifstream file;
+	file.open(this->fileName);
+
+	if (file.fail()) throw new std::invalid_argument("Erro de Leitura");
+
+	Modulo *modulo = this->readModuleFromFile(file);
+
+	file.close();
+	return modulo;
+}
+
+Modulo *PersistenciaDeModulo::readModuleFromFile(std::ifstream &file) {
+	Modulo *modulesList[100] = {nullptr};
+	std::string readChar;
+	int nestedModule = -1;
+
+	while (!file.fail()) {
+		file >> readChar;
+
+		switch (readChar[0]) {
+			case 'S':
+				nestedModule++;
+				modulesList[nestedModule] = new ModuloEmSerie();
+				if (nestedModule != 0) modulesList[nestedModule - 1]->adicionar(modulesList[nestedModule]);
+				break;
+			case 'P':
+				nestedModule++;
+				modulesList[nestedModule] = new ModuloEmParalelo();
+				if (nestedModule != 0) modulesList[nestedModule - 1]->adicionar(modulesList[nestedModule]);
+				break;
+			case 'R':
+				nestedModule++;
+				modulesList[nestedModule] = new ModuloRealimentado();
+				if (nestedModule != 0) modulesList[nestedModule - 1]->adicionar(modulesList[nestedModule]);
+				break;
+			case 'A':
+				double value;
+				file >> value;
+				if (!file.fail()) {
+					modulesList[nestedModule]->adicionar(new Amplificador(value));
+				} else {
+					throw new std::logic_error("Wrong value for Amplificador");
+				}
+				break;
+			case 'I':
+				modulesList[nestedModule]->adicionar(new Integrador());
+				break;
+			case 'D':
+				modulesList[nestedModule]->adicionar(new Derivador());
+				break;
+			case 'f':
+				nestedModule--;
+				break;
+			default:
+				throw new std::logic_error("Coringando");
+				break;
+		}
+	}
+
+	if (nestedModule != -2) {
+		throw new std::logic_error("Algo de errado não esta certo");
+	}
+
+	return modulesList[0];
 }
