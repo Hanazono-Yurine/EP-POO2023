@@ -44,7 +44,7 @@ The project is divided into two parts: EP-1 and EP-2.
 
 The final grades for the project will be updated throughout the semester:  
 
-EP-1 -> [??]
+EP-1 -> 10
 
 EP-2 -> [??]
 
