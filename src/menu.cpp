@@ -84,8 +84,8 @@ void menu() {
 
 		cout << endl;
 
-		ModuloRealimentado *moduloRealimentado = new ModuloRealimentado(acceleration);
-		moduloRealimentado->processar(signalSim)->imprimir("Velocidade do Carro");
+		//ModuloRealimentado *moduloRealimentado = new ModuloRealimentado(acceleration);
+		//moduloRealimentado->processar(signalSim)->imprimir("Velocidade do Carro");
 
 	} else if (choice == 2) {
 		bool repeat = true;

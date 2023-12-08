@@ -1,7 +1,14 @@
+#include "Derivador.h"
+#include "Modulo.h"
+#include "ModuloEmParalelo.h"
+#include "ModuloEmSerie.h"
 #include "ModuloRealimentado.h"
+#include "PersistenciaDeModulo.h"
 #include "Sinal.h"
 #include "Amplificador.h"
 #include "Integrador.h"
+#include <algorithm>
+#include <iostream>
 
 const int maxSteps = 60;
 
@@ -10,18 +17,16 @@ void test();
 void teste();
 
 int main() {
-	//Bom dia
-	menu();
-	//teste();
+	//menu();
+	test();
 	return 0;
 }
 
 void test() {
-	ModuloRealimentado test = ModuloRealimentado(0.2);
-	double justatest[maxSteps];
-	for (int i = 0; i < maxSteps; i++) {
-		justatest[i] = 5;
-	}
-	Sinal *finalTest = test.processar(new Sinal(justatest, maxSteps));
-	finalTest->imprimir("test");
+	PersistenciaDeModulo backup = PersistenciaDeModulo("test.txt");
+
+	Modulo *serie = backup.lerDeArquivo();
+
+	serie->imprimir();
+
 }
