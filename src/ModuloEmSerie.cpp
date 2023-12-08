@@ -21,7 +21,7 @@ Sinal *ModuloEmSerie::processar(Sinal *sinalIN) {
 	Sinal *sinal = (*it++)->processar(sinalIN);
 
 	while (it != this->getCircuitos()->end()) {
-		sinal = (*it)->processar(sinal);
+		sinal = (*it++)->processar(sinal);
 	}
 
 	return sinal;
