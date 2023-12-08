@@ -17,6 +17,10 @@ void ModuloRealimentado::adicionar(CircuitoSISO *circ) {
 	this->piloto->adicionar(circ);
 }
 
+std::list<CircuitoSISO*> *ModuloRealimentado::getCircuitos() {
+	return this->piloto->getCircuitos();
+}
+
 Sinal* ModuloRealimentado::processar(Sinal* sinalIN) {
 	Amplificador inverter = Amplificador(-1.0);
 	Somador sum = Somador();
