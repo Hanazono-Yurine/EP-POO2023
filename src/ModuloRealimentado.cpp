@@ -1,16 +1,12 @@
 #include "ModuloRealimentado.h"
 #include "Amplificador.h"
 #include "Somador.h"
-#include "Integrador.h"
 #include "Modulo.h"
 #include "ModuloEmSerie.h"
-#include "Piloto.h"
 #include "Somador.h"
 #include "Sinal.h"
-#include <iostream>
 
 ModuloRealimentado::ModuloRealimentado() : Modulo(), piloto(new ModuloEmSerie()) {
-
 }
 
 ModuloRealimentado::~ModuloRealimentado() {
