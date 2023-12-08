@@ -25,6 +25,7 @@ void Modulo::imprimir() {
 	std::list<CircuitoSISO *>::iterator it = this->circuitList->begin();
 	while (it != this->circuitList->end()) {
 		(*it)->imprimir();
+		it++;
 	}
 	std::cout << "--" << std::endl;
 }
