@@ -1,9 +1,10 @@
 #ifndef AMPLIFICADOR_H
 #define AMPLIFICADOR_H
 
+#include "CircuitoSISO.h"
 #include "Sinal.h"
 
-class Amplificador {
+class Amplificador : public CircuitoSISO {
 	public:
 		Amplificador(double ganho);
 		virtual ~Amplificador();
