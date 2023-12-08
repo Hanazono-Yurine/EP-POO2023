@@ -119,4 +119,4 @@ add_executable(ep-poo
 )
 target_link_libraries(ep-poo amplificador somador sinal derivador integrador modulorealimentado piloto moduloemserie moduloemparalelo persistenciademodulo)
 
-#add_subdirectory(tests)
+add_subdirectory(tests)
