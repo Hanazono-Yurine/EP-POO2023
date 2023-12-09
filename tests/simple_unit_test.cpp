@@ -2,6 +2,26 @@
 #include "../src/Amplificador.h"
 #include "../src/Somador.h"
 #include "../src/Sinal.h"
+#include "../src/ModuloEmSerie.h"
+#include "../src/ModuloEmParalelo.h"
+#include "../src/PersistenciaDeModulo.h"
+#include "../src/Integrador.h"
+
+TEST_CASE("Testing Circuito class", "[Circuito]") {
+	REQUIRE(Circuito::getUltimoID() == 0);
+
+	ModuloEmSerie modulo = ModuloEmSerie();
+	Amplificador amp = Amplificador(0.02);
+	Integrador intr = Integrador();
+	ModuloEmParalelo moduloP = ModuloEmParalelo();
+	Amplificador ampP = Amplificador(0.02);
+	Integrador intrP = Integrador();
+
+	SECTION("Get ID") {
+		REQUIRE(amp.getID() == 2);
+		REQUIRE(moduloP.getID() == 4);
+	}
+}
 
 TEST_CASE( "Verify Amplificador class", "[Amplificador]") {
 	double simpleArray[5] = {1.0, 2.0, 3.0, 4.0, 5.0};
@@ -31,6 +51,11 @@ TEST_CASE( "Verify Amplificador class", "[Amplificador]") {
 		delete [] ampArray;
 		delete p;
 	}
+	
+	SECTION("Get gain") {
+		Amplificador *p = new Amplificador(-0.75);
+		REQUIRE(p->getGanho() == -0.75);
+	}
 }
 
 TEST_CASE("Verify Somador class", "[Somador]") {
@@ -49,5 +74,28 @@ TEST_CASE("Verify Somador class", "[Somador]") {
 
 		delete [] sumArray;
 		delete sum;
+	}
+}
+
+TEST_CASE("Testing PersistenciaDeModulo class", "[PersistenciaDeModulo]") {
+	PersistenciaDeModulo backup = PersistenciaDeModulo("test.txt");
+	PersistenciaDeModulo backup2 = PersistenciaDeModulo("test.txt");
+
+	ModuloEmSerie modulo = ModuloEmSerie();
+	Amplificador amp = Amplificador(0.02);
+	Integrador intr = Integrador();
+
+	ModuloEmParalelo moduloP = ModuloEmParalelo();
+	Amplificador ampP = Amplificador(0.02);
+	Integrador intrP = Integrador();
+	moduloP.adicionar(&ampP);
+	moduloP.adicionar(&intrP);
+
+	modulo.adicionar(&amp);
+	modulo.adicionar(&moduloP);
+	modulo.adicionar(&intr);
+
+	SECTION("Write to file") {
+		backup.salvarEmArquivo(&modulo);
 	}
 }
