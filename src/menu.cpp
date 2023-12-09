@@ -25,7 +25,7 @@ void menu() {
 	}
 
 	std::cout << "        Simulink em C++" << std::endl;
-	std::cout << "Qual simulacao voce gostaria de fazer ?\n1) Circuito advindo de arquivo" << std::endl;
+	std::cout << "Qual simulacao voce gostaria de fazer?\n1) Circuito advindo de arquivo" << std::endl;
 	std::cout <<	"2) Sua propria sequencia de operacoes\nEscolha: ";
 
 	int choice = 0;
@@ -75,7 +75,7 @@ void menu() {
 
 	std::cout << "\nVoce gostaria de salvar o circuito em um novo arquivo?" << std::endl;
 	std::cout << "1) Sim" << std::endl;
-	std::cout << "1) Nao" << std::endl;
+	std::cout << "2) Nao" << std::endl;
 	std::cout << "Escolha: ";
 
 	int saveCircuitChoice = 0;
@@ -140,7 +140,7 @@ Sinal* newSinal() {
 	double arraySinal[maxSteps];
 
 	std::cout << "\nQual sinal voce gostaria de utilizar como entrada da sua simulacao?" << std::endl;
-	std::cout << "1) 5 + 3 * cos(n * pi / 8)\n2) constante\n3) rampa\nEscolha: ";
+	std::cout << "1) 5+3*cos(n*pi/8)\n2) constante\n3) rampa\nEscolha: ";
 
 	int choiceSinal = 0;
 	std::cin >> choiceSinal;
