@@ -78,7 +78,8 @@ Modulo *PersistenciaDeModulo::lerDeArquivo() {
 }
 
 Modulo *PersistenciaDeModulo::readModuleFromFile(std::ifstream &file) {
-	Modulo *modulesList[100] = {nullptr};
+	//Seria melhor usar vector, eu sei, mas mó preguica de mudar :)
+	Modulo *modulesList[1000] = {nullptr};
 	std::string readChar;
 	int nestedModule = -1;
 
