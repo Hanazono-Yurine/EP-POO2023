@@ -19,7 +19,7 @@ PersistenciaDeModulo::PersistenciaDeModulo(std::string nomeDoArquivo) : fileName
 PersistenciaDeModulo::~PersistenciaDeModulo() {
 }
 
-void PersistenciaDeModulo::salvarEmAquivo(Modulo *mod) {
+void PersistenciaDeModulo::salvarEmArquivo(Modulo *mod) {
 	std::ofstream file = std::ofstream(this->fileName);
 
 	this->writeModuloToFile<Modulo>(mod, file);

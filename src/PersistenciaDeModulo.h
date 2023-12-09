@@ -8,7 +8,7 @@ class PersistenciaDeModulo {
 	public:
 		PersistenciaDeModulo(std::string nomeDoArquivo);
 		virtual ~PersistenciaDeModulo();
-		void salvarEmAquivo(Modulo *mod);
+		void salvarEmArquivo(Modulo *mod);
 		Modulo *lerDeArquivo();
 	private:
 		std::string fileName;
