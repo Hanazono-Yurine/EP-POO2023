@@ -88,7 +88,7 @@ void menu() {
 		std::cin >> newFileName;
 
 		PersistenciaDeModulo persistenciaDeModulo = PersistenciaDeModulo(newFileName);
-		persistenciaDeModulo.salvarEmAquivo(modulo);
+		persistenciaDeModulo.salvarEmArquivo(modulo);
 	}
 }
 
