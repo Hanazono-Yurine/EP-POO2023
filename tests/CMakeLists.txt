@@ -12,7 +12,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 add_executable(unit_test simple_unit_test.cpp)
-target_link_libraries(unit_test PRIVATE amplificador sinal somador)
+target_link_libraries(unit_test PRIVATE amplificador sinal somador integrador persistenciademodulo)
 target_link_libraries(unit_test PRIVATE Catch2::Catch2WithMain)
 set_target_properties( unit_test
     PROPERTIES
