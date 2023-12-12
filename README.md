@@ -46,7 +46,7 @@ The final grades for the project will be updated throughout the semester:
 
 EP-1 -> 10
 
-EP-2 -> [??]
+EP-2 -> 9.5 (We didn't get 10 because we didn't remove the files from the pilot class :( )
 
 # Some notes
 
